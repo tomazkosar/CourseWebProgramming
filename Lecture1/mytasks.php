@@ -7,7 +7,7 @@ function get_notes()
     $notes = array();
     if (isset($_SESSION["USER_ID"])) {
         $user_id = $_SESSION["USER_ID"];
-        $query = "SELECT user.name as uname, note_item.name as iname, note_category.name as cname, done FROM note  
+        $query = "SELECT user.name as uname, note_item.name as iname, note_category.name as cname, done, note.item_id as item_id FROM note  
         JOIN user ON 
             note.user_id=user.user_id
         JOIN note_item ON 
@@ -33,6 +33,7 @@ $notes = get_notes();
         <th>Note</th>
         <th>Category</th>
         <th>Done</th>
+        <th>Change</th>
     </tr>
     <?php
     foreach ($notes as $note) {
@@ -42,6 +43,12 @@ $notes = get_notes();
             <td><?php echo $note->iname; ?></td>
             <td><?php echo $note->cname; ?></td>
             <td><?php echo(($note->done == 1) ? "Yes" : "No"); ?></td>
+            <td> <a href="note.php?id=<?php echo $note->item_id;?>">
+                <?php
+                    if ($note->done == 0)
+                        echo "<button>Change</button>";
+                ?>
+                </a></td>
         </tr>
         <?php
     }

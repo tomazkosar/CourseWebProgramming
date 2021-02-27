@@ -1,7 +1,6 @@
 <?php
 include_once('header.php');
 ?>
-
     <h1>Welcome to Notes application!</h1>
     <nav>
         <ul>
@@ -15,7 +14,6 @@ include_once('header.php');
             ?>
         </ul>
     </nav>
-
 <?php
 include_once('footer.php');
 ?>

@@ -1,12 +1,5 @@
 <?php
-session_start();
-if (isset($_SESSION['LAST_ACTIVITY']) && time() - $_SESSION['LAST_ACTIVITY'] < 1800) {
-    session_regenerate_id(true);
-}
-$_SESSION['LAST_ACTIVITY'] = time();
-
-$conn = new mysqli('localhost', 'root', '', 'notes_schema');
-$conn->set_charset("UTF8");
+include_once('header.php');
 
 function get_rows($select)
 {
@@ -86,17 +79,18 @@ if (isset($_POST["submit"])) {
     </label><br/>
     <label>Task
         <input type="text" name="item"/>
-    </label>
+    </label><br/>
     <label>Done
         <select id="done" name="done">
             <option value="yes">Yes</option>
             <option value="no">No</option>
-        </select><br/>
+        </select><br/><br/>
     </label>
     <input type="submit" name="submit" value="Send"/><br/>
     <label><?php echo $error; ?></label><br/>
 
 </form>
 
-</body>
-</html>
+<?php
+include_once('footer.php');
+?>
