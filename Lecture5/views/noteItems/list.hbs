@@ -1,0 +1,30 @@
+<form action="?controller=items&action=update&id=<?= $item->item_id; ?>" method="post">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Note item</th>
+        <th>Done</th>
+      </tr>
+    </thead>
+    <tbody>
+		{{#each this}}
+		<tr>		
+			<td>
+			    {{id}}			    
+			</td>
+			<td>
+			    {{name}}
+			</td>
+			<td>
+			    {{done}}
+			</td>
+			<td>
+				<input class="btn btn-primary" type="submit" name="Change" value="Change"/>
+			</td>
+		</tr>
+		{{/each}}
+    </tbody>
+</table>
+</form>
+
