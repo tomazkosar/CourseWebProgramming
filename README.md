@@ -12,7 +12,7 @@ A simple PHP application Notes, where we write down tasks that we need to do inÂ
 7. Databases
 8. Connection to DB
 
-Tools used:
+### Tools used
 1. WAMP
 2. MyPhpAdmin
 3. MariaDB
