@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Items = ({ items }) => {
+const ItemsAlt = ({ items }) => {
   return (
     <div>
       <center><h1>Note items</h1></center>
@@ -11,11 +11,11 @@ const Items = ({ items }) => {
           </tr>
         </thead>
         <tbody>
-        {this.items.map((item) => (
+        {items.map((item) => (
           <tr>    
             <td>{(item._id).toString()}</td>
             <td>{item.name}</td>
-            <td>{(item.done).toString()}</td>
+            <td>{(item.done) ? "Yes" : "No"}</td>
             <td><input class="btn btn-primary" 
                   type="submit" name="Change" value="Change"/></td>
           </tr>
@@ -26,5 +26,5 @@ const Items = ({ items }) => {
   )
 };
 
-export default Items
+export default ItemsAlt
 
