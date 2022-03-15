@@ -7,8 +7,12 @@ em.addListener('FirstEvent', function (data) {
     console.log('First subscriber: ' + data);
 });
 
+em.addListener('FirstEvent', function (data) {
+    console.log('Third subscriber: ' + data);
+});
+
 em.on('SecondEvent', function (data) {  // similar 
-    console.log('First subscriber: ' + data);
+    console.log('Second subscriber: ' + data);
 });
 
 em.emit('FirstEvent', 'First event emitter example.');
