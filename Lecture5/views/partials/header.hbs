@@ -1,0 +1,12 @@
+<div>
+    <span style="float:right">
+        {{#if userId}}
+            {{username}}(<a href="/user/profile">profile</a>)&nbsp
+            <a href="/user/logout">Logout</a>&nbsp;
+        {{else}}
+            <a href="/user/login">Login</a>&nbsp;
+            <a href="/user/register">Registration</a>
+        {{/if}}
+    </span><br/>
+</div>
+

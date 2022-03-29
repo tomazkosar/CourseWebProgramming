@@ -2,13 +2,20 @@ var express = require('express');
 var router = express.Router();
 var NoteItemController = 
 	require('../controllers/NoteItemController.js');
-
-        console.log('router!!!');    
+const UserController = require("../controllers/UserController");
 
 /*
  * GET
  */
 router.get('/', NoteItemController.list);
+
+router.get('/newtask',  NoteItemController.newTask);
+
+router.get('/open',  NoteItemController.openTask);
+
+router.get('/finished',  NoteItemController.finishedTask);
+
+router.get('/work',  NoteItemController.workTask);
 
 /*
  * GET

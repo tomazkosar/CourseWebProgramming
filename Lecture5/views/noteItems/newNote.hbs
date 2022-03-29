@@ -1,0 +1,22 @@
+{{> header}}
+
+<h1>New task</h1>
+<p>{{this.id}}</p>
+<form action="/items" method="post">
+    <label>Category
+        <input type="text" name="category" placeholder="Category" required=""/>
+    </label><br/>
+    <label>Task
+    <input type="text" name="name" placeholder="Name" required=""/>
+    </label><br/>
+    <label>Done
+    <select id="done" name="done" placeholder="Done" required="">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+        </select><br/><br/>
+    </label>
+    </label><br/>
+    <input type="submit" value="Send">
+</form>
+
+{{> footer}}

@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start" : "node hello_files.js",
-    "dev": "nodemon hello_files.js"
+    "start" : "node hello.js",
+    "dev": "nodemon hello.js"
   },
   "dependencies": {
     "express": "^4.17.1",

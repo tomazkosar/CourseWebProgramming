@@ -3,14 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "hbs": "~4.0.4",
+    "express-handlebars": "^6.0.3",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
     "mongoose": "^5.9.6",
     "morgan": "~1.9.1"

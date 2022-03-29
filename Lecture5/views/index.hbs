@@ -1,2 +1,25 @@
-<h1>{{title}}</h1>
-<p><b>Welcome TO {{title}}</b></p>
+<html lang="en">
+<head>
+    <title>Lecture Notes 5</title>
+</head>
+<body>
+
+{{> header}}
+
+<h1>Notes application!</h1>
+<nav>
+    <ul>
+        {{#if userId}}
+            <li><a href="/items/newtask">New task</a></li><br>
+            <li><a href="/items/">Task list</a></li><br>
+            <li><a href="/items/open">Open tasks</a></li><br>
+            <li><a href="/items/finished">Finished tasks</a></li><br>
+            <li><a href="/items/work">Work tasks</a></li><br>
+        {{else}}
+            <p>Need to login to see the content of this webpage!</p>
+        {{/if}}
+    </ul>
+</nav>
+
+</body>
+</html>

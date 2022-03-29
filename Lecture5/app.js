@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-//CORS - Angular demo
+//CORS - React demo
 var cors = require('cors');
 
 var mongoDB = 'mongodb+srv://'+dbAuth+'@cluster0-q3d7o.gcp.mongodb.net/NotesDB?retryWrites=true&w=majority';
@@ -15,17 +15,29 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 
 	'MongoDB connection error:'));
 
-console.log('Valid: ', mongoose.Types.ObjectId.isValid('5e7a9d4aaa45563d18a7c0fa'));
-
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var notesItemRouter = require('./routes/NoteItemRoutes');  
+var usersRouter = require('./routes/UserRoutes');
+var notesItemRouter = require('./routes/NoteItemRoutes');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+var hbs = require('hbs');
+app.set("view engine", "hbs");
+app.use(express.static(__dirname + "/public"));
+hbs.registerPartials(__dirname + "/views/partials");
+
+const oneDay = 1000 * 60 * 60 * 24;
+var session = require('express-session');
+var MongoStore = require('connect-mongo');
+app.use(session({
+  secret: 'sadgdhgjhlelktrgsigjtewcxyvxbverts',
+  resave: true,
+  saveUninitialized: false,
+  cookie: { maxAge: oneDay },
+  store: MongoStore.create({ mongoUrl: mongoDB })
+}));
 
 var allowedOrigins = ['http://localhost:4200', 
                       'http://localhost:4100', 
@@ -53,8 +65,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
    
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/items', notesItemRouter);   
+app.use('/user', usersRouter);
+app.use('/items', notesItemRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

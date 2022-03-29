@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { } from 'react'
 
 class Items extends React.Component{
   render(){
@@ -9,7 +9,7 @@ class Items extends React.Component{
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>#</th><th>Note item</th><th>Done</th>
+              <th>#</th><th>Note item</th><th>Category</th><th>Done</th><th>Change</th>
             </tr>
           </thead>
           <tbody>
@@ -17,6 +17,7 @@ class Items extends React.Component{
               <tr>    
                 <td>{(item._id).toString()}</td>
                 <td>{item.name}</td>
+                <td>{item.category}</td>
                 <td>{(item.done) ? "Yes" : "No"}</td>
                 <td><input class="btn btn-primary" 
                       type="submit" name="Change" value="Change"/></td>
