@@ -17,6 +17,8 @@ router.get('/finished',  NoteItemController.finishedTask);
 
 router.get('/work',  NoteItemController.workTask);
 
+router.get('/shopping',  NoteItemController.shopTask);
+
 /*
  * GET
  */

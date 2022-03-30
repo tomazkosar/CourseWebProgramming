@@ -12,9 +12,9 @@ module.exports = {
      */
     list: function (req, res) {
         //React demo
-        //NoteItemModel.find(function (err, NoteItems) {
+        NoteItemModel.find(function (err, NoteItems) {
         //Express demo
-        NoteItemModel.find({username:req.session.username},function (err, NoteItems) {
+        //NoteItemModel.find({username:req.session.username},function (err, NoteItems) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting NoteItem.',
@@ -23,9 +23,9 @@ module.exports = {
             }
 
             //React demo
-            //return res.json(NoteItems);
+            return res.json(NoteItems);
             //Express demo
-            return res.render('noteItems/list', {data:NoteItems, userId:req.session.userId , username:req.session.username} );
+            //return res.render('noteItems/list', {data:NoteItems, userId:req.session.userId , username:req.session.username} );
         });
     },
 
@@ -56,7 +56,7 @@ module.exports = {
     },
 
     workTask: function (req, res) {
-        NoteItemModel.find({username:req.session.username, category:"Služba"},function (err, NoteItems) {
+        NoteItemModel.find({username:req.session.username, category:"Work"},function (err, NoteItems) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting NoteItem.',
@@ -67,6 +67,20 @@ module.exports = {
             return res.render('noteItems/list', {data:NoteItems, userId:req.session.userId , username:req.session.username} );
         });
     },
+
+    shopTask: function (req, res) {
+        NoteItemModel.find({username:req.session.username, category:"Shopping"},function (err, NoteItems) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when getting NoteItem.',
+                    error: err
+                });
+            }
+
+            return res.render('noteItems/list', {data:NoteItems, userId:req.session.userId , username:req.session.username} );
+        });
+    },
+
 
     newTask: function (req, res) {
         res.render('noteItems/newNote',  {userId:req.session.userId , username:req.session.username});

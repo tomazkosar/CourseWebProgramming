@@ -1,0 +1,28 @@
+{{> header}}
+
+<h1>Users in Notes application</h1>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+		{{#each data}}
+            {{#if id}}
+                <tr>
+                    <td>
+                        {{name}}
+                    </td>
+                    <td>
+                        {{username}}
+                    </td>
+                </tr>
+            {{/if}}
+		{{/each}}
+    </tbody>
+</table>
+
+{{> footer}}
+
