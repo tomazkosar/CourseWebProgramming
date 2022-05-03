@@ -12,9 +12,9 @@ module.exports = {
      */
     list: function (req, res) {
         //React demo
-        NoteItemModel.find(function (err, NoteItems) {
+        //NoteItemModel.find(function (err, NoteItems) {
         //Express demo
-        //NoteItemModel.find({username:req.session.username},function (err, NoteItems) {
+        NoteItemModel.find({username:req.session.username},function (err, NoteItems) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting NoteItem.',
@@ -115,7 +115,7 @@ module.exports = {
 			name : req.body.name,
 			done : req.body.done,
             category : req.body.category,
-            username : req.session.username
+            username : req.body.username
 
         });
 

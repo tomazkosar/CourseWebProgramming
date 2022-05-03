@@ -93,11 +93,17 @@ module.exports = {
             if (error || !user) {
                 var err = new Error("Wrong username or password");
                 err.status = 401;
-                return res.redirect('/user/login');
+                //return res.redirect('/user/login');
+                return res.json({
+                    message: 'Wrong login!',
+                    error: err
+                })
             } else {
                 req.session.userId = user._id;
                 req.session.username = user.username;
-                return res.render('index', {userId: req.session.userId, username:req.session.username});
+
+                return res.json(user);
+                //return res.render('index', {userId: req.session.userId, username:req.session.username});
             }
         });
     },

@@ -18,8 +18,11 @@ db.on('error', console.error.bind(console,
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/UserRoutes');
 var notesItemRouter = require('./routes/NoteItemRoutes');
+var notesCategoriesRouter = require('./routes/NoteCategoryRoutes');
 
 var app = express();
+
+app.disable('etag');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +35,8 @@ const oneDay = 1000 * 60 * 60 * 24;
 var session = require('express-session');
 var MongoStore = require('connect-mongo');
 app.use(session({
-  secret: 'sadgdhgjhlelktrgsigjtewcxyvxbverts',
+  name: 'session',
+  secret: 'this is a secret key',
   resave: true,
   saveUninitialized: false,
   cookie: { maxAge: oneDay },
@@ -67,6 +71,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/items', notesItemRouter);
+app.use('/categories', notesCategoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
